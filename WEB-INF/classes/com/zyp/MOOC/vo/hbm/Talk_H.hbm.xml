@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.zyp.MOOC.vo.Talk_H" table="mooc_talk_homework">
+        <id name="id">
+            <generator class="native"/>
+        </id>
+        <property name="vname"/>
+        <property name="text"/>
+        <property name="cid"/>
+        <property name="time"/>
+
+        <!--<many-to-one name="vip" column="cid"></many-to-one>-->
+    </class>
+
+</hibernate-mapping>

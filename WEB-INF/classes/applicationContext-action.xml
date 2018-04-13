@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="
+			http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+			http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+			http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
+    <!-- 在userManagrAction要用到实例化的userServiceImpl，所以把userServiceImpl注入到userManagrAction -->
+
+    <bean id="courseAction" class="com.zyp.MOOC.actions.CourseAction" scope="prototype">
+        <property name="courseService" ref="courseServiceImpl"/>
+    </bean>
+
+    <bean id="movieAction" class="com.zyp.MOOC.actions.MovieAction" scope="prototype">
+        <property name="movieService" ref="movieServiceImpl"/>
+    </bean>
+
+    <bean id="userAction" class="com.zyp.MOOC.actions.UserAction" scope="prototype">
+        <property name="userService" ref="userServiceImpl"/>
+    </bean>
+
+    <bean id="vipAction" class="com.zyp.MOOC.actions.VipAction" scope="prototype">
+        <property name="vipService" ref="vipServiceImpl"/>
+    </bean>
+
+    <bean id="talk_CAction" class="com.zyp.MOOC.actions.Talk_CAction" scope="prototype">
+        <property name="talk_CService" ref="talk_CServiceImpl"/>
+    </bean>
+
+    <bean id="talk_HAction" class="com.zyp.MOOC.actions.Talk_HAction" scope="prototype">
+        <property name="talk_HService" ref="talk_HServiceImpl"/>
+    </bean>
+</beans>

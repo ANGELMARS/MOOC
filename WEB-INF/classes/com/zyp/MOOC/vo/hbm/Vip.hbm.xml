@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.zyp.MOOC.vo.Vip" table="mooc_vip">
+        <id name="vid">
+            <generator class="native"/>
+        </id>
+        <property name="vname" unique-key="true"/>
+        <property name="head"/>
+        <property name="text"/>
+
+        <set name="talks" table="mooc_talk_course" inverse="true">
+            <key column="cid"/>
+            <one-to-many class="com.zyp.MOOC.vo.Talk_C"/>
+
+        </set>
+
+
+        <!--set name="books" table="tb_book" inverse="true">
+            <key column="vid"></key>
+            <one-to-many class="com.zyp.MOOC.vo.Book"/>
+
+        </set-->
+    </class>
+
+
+</hibernate-mapping>

@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+    <!-- 把struuts2交给spring管理  没这句ssh无法集成 -->
+    <constant name="struts.objectFactory" value="spring"/>
+    <!--上传文件最大限制-->
+    <constant name="struts.multipart.maxSize" value="524288000"/>
+    <!-- 解决乱码 -->
+    <constant name="struts.i18n.encoding" value="UTF-8"/>
+    <!--action配置-->
+
+
+    <!--文件上传-->
+    <package name="fileupload" extends="struts-default">
+
+        <action name="mfileupd_*"
+                class="com.zyp.MOOC.actions.MFileUploadAction"
+                method="{1}"
+        >
+            <result name="headsuccess">/views/uploadtools/headsuccess.jsp</result>
+            <result name="imgsuccess">/views/uploadtools/imgsuccess.jsp</result>
+            <result name="moviesuccess">/views/uploadtools/moviesuccess.jsp</result>
+            <result name="filesuccess">/views/uploadtools/filesuccess.jsp</result>
+            <result name="input">/views/uploadtools/upload.jsp</result>
+            <interceptor-ref name="fileUpload">
+                <param name="savePath">/data</param>
+                <param name="maximumSize">524288000</param> <!--上传文件最大值-->
+                <!--限制文件上传类型-->
+                <!--<param name="allowedTypes">-->
+                    <!--image/png,image/gif,image/jpeg,video/mp4,image/gif,application/msword,application/x-tar-->
+                <!--</param>-->
+            </interceptor-ref>
+            <interceptor-ref name="defaultStack"/>
+        </action>
+    </package>
+
+    <!--课程讨论-->
+    <package name="talk_C" extends="struts-default">
+        <action name="talk_CAction_*"
+                class="talk_CAction"
+                method="{1}"
+        >
+            <result name="findAllTalk">/views/talk_course.jsp</result>
+            <result name="addtalksuccess">/views/return/return.jsp</result>
+            <!--教师端-->
+            <result name="findTeacherAllTalk">/views/teacher/talk_course.jsp</result>
+            <result name="delTalksuccess">/views/return/return.jsp</result>
+        </action>
+    </package>
+
+    <!--作业讨论-->
+    <package name="talk_H" extends="struts-default">
+        <action name="talk_HAction_*"
+                class="talk_HAction"
+                method="{1}"
+        >
+            <result name="findAllTalk">/views/talk_homework.jsp</result>
+            <result name="addtalksuccess">/views/return/return.jsp</result>
+            <!--教师端-->
+            <result name="findTeacherAllTalk">/views/teacher/talk_homework.jsp</result>
+            <result name="delTalksuccess">/views/return/return.jsp</result>
+        </action>
+    </package>
+
+    <!--课程相关-->
+    <package name="course" extends="struts-default">
+        <action name="courseAction_*"
+                class="courseAction"
+                method="{1}"
+        >
+            <result name="findAllCourse">/views/courselist.jsp</result>
+            <result name="findcourse">/views/course.jsp</result>
+            <result name="searchcourse">/views/coursesearch.jsp</result>
+            <!--教师端-->
+            <result name="findteacherAllCourse">/views/teacher/courselist.jsp</result>
+            <result name="searchteachercourse">/views/teacher/coursesearch.jsp</result>
+            <result name="addcoursesuccess">/views/return/addcoursesuccess.jsp</result>
+            <result name="delcoursesuccess">/views/return/addcoursesuccess.jsp</result>
+            <result name="delcourseAdminsuccess">/views/return/return.jsp</result>
+            <result name="findteachercourse">/views/teacher/course.jsp</result>
+            <result name="rechangeCourseName">/views/return/changeCourseSuccess.jsp</result>
+            <result name="rechangeCourseText">/views/return/changeCourseSuccess.jsp</result>
+            <result name="rechangeCourseHomework">/views/return/changeCourseSuccess.jsp</result>
+            <result name="rechangeCourseImg">/views/return/return-upfile.jsp</result>
+            <result name="rechangeCourseFile">/views/return/return-upfile.jsp</result>
+            <result name="delCourseFile">/views/return/return.jsp</result>
+        </action>
+    </package>
+
+    <!--视频相关-->
+    <package name="movie" extends="struts-default">
+        <action name="movieAction_*"
+                class="movieAction"
+                method="{1}"
+        >
+            <result name="findAllMovie">/views/movielist.jsp</result>
+            <!--教师端-->
+            <result name="findteacherAllMovie">/views/teacher/movielist.jsp</result>
+            <result name="rechangeMovieName">/views/return/return.jsp</result>
+            <result name="addmoviesuccess">/views/return/return.jsp</result>
+            <result name="delmoviesuccess">/views/return/return.jsp</result>
+            <result name="rechangeMovieLink">/views/return/return-upfile.jsp</result>
+        </action>
+    </package>
+
+    <!--登录相关-->
+    <package name="user" extends="struts-default">
+        <action name="userAction_*"
+                class="userAction"
+                method="{1}"
+        >
+            <result name="loginsuccess">/views/return/loginsuccess.jsp</result>
+            <result name="loginfail">/views/return/loginfail.jsp</result>
+            <result name="loginteachersuccess">/views/return/loginteachersuccess.jsp</result>
+            <result name="addusersuccess">/index.jsp</result>
+            <result name="rechangeUser">/views/return/changepwdsuccess.jsp</result>
+            <result name="loginadminsuccess">/views/return/loginadminsuccess.jsp</result>
+            <!--用户管理-->
+            <result name="findalluser">/views/admin/alluser.jsp</result>
+            <result name="delusersuccess">/views/return/return.jsp</result>
+            <result name="findallteacher">/views/admin/allteacher.jsp</result>
+            <result name="findallcourse">/views/admin/allcourse.jsp</result>
+            <result name="findallTalk_H">/views/admin/allTalk_H.jsp</result>
+            <result name="findallTalk_C">/views/admin/allTalk_C.jsp</result>
+            <!--<result name="finduserbyid">/user/update.jsp</result>-->
+            <!--<result name="findusers">/user/index.jsp</result>-->
+        </action>
+    </package>
+
+    <!--用户详情相关-->
+    <package name="vip" extends="struts-default">
+        <action name="vipAction_*"
+                class="vipAction"
+                method="{1}"
+        >
+            <result name="addvip">/views/test/vip.jsp</result>
+            <result name="findvip">/views/vipshow.jsp</result>
+            <result name="findvip0">/views/vipinfo.jsp</result>     <!--在vipshow里显示vip详情-->
+            <result name="findvip1">/views/changetext.jsp</result>     <!--改变vip信息-->
+            <result name="delvip">/views/test/vip.jsp</result>
+            <result name="rechangeVip">/views/return/changetextsuccess.jsp</result>
+            <result name="rechangeVipHead">/views/return/changeheadsuccess.jsp</result>
+            <!--教师端-->
+            <result name="findTeachervip">/views/teacher/vipshow.jsp</result>
+        </action>
+    </package>
+
+
+</struts>

@@ -1,0 +1,30 @@
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+    <session-factory>
+        <!--数据库链接-->
+        <property name="connection.url">
+            jdbc:mysql://127.0.0.1:3306/mooc?characterEncoding=utf8
+        </property>
+        <property name="connection.username">root</property>
+        <property name="connection.password">zyp19940314</property>
+        <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+        <property name="dialect">
+            org.hibernate.dialect.MySQLDialect
+        </property>
+        <!-- 是否在控制台打印sql语句 -->
+        <property name="hibernate.show_sql">true</property>
+
+        <property name="hibernate.format_sql">true</property>
+
+        <property name="hibernate.hbm2ddl.auto">update</property>
+        <mapping resource="com/zyp/MOOC/vo/hbm/User.hbm.xml"/>
+        <mapping resource="com/zyp/MOOC/vo/hbm/Vip.hbm.xml"/>
+        <mapping resource="com/zyp/MOOC/vo/hbm/Course.hbm.xml"/>
+        <mapping resource="com/zyp/MOOC/vo/hbm/Movie.hbm.xml"/>
+        <mapping resource="com/zyp/MOOC/vo/hbm/Talk_C.hbm.xml"/>
+        <mapping resource="com/zyp/MOOC/vo/hbm/Talk_H.hbm.xml"/>
+    </session-factory>
+</hibernate-configuration>

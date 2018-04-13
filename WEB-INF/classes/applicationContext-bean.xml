@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="
+			http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+			http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+			http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
+
+    <bean id="talk_Hdao" class="com.zyp.MOOC.dao.Talk_HDao">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+
+    <bean id="talk_HServiceImpl" class="com.zyp.MOOC.services.Impl.Talk_HServiceImpl">
+        <property name="talk_Hdao" ref="talk_Hdao"/>
+    </bean>
+
+    <bean id="talk_Cdao" class="com.zyp.MOOC.dao.Talk_CDao">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+
+    <bean id="talk_CServiceImpl" class="com.zyp.MOOC.services.Impl.Talk_CServiceImpl">
+        <property name="talk_Cdao" ref="talk_Cdao"/>
+    </bean>
+
+    <bean id="coursedao" class="com.zyp.MOOC.dao.CourseDao">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+
+    <bean id="courseServiceImpl" class="com.zyp.MOOC.services.Impl.CourseServiceImpl">
+        <property name="coursedao" ref="coursedao"/>
+    </bean>
+
+    <bean id="moviedao" class="com.zyp.MOOC.dao.MovieDao">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+
+    <bean id="movieServiceImpl" class="com.zyp.MOOC.services.Impl.MovieServiceImpl">
+        <property name="movieDao" ref="moviedao"/>
+    </bean>
+
+    <bean id="userdao" class="com.zyp.MOOC.dao.Userdao">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+
+    <bean id="userServiceImpl" class="com.zyp.MOOC.services.Impl.UserServiceImpl">
+        <property name="userdao" ref="userdao"/>
+    </bean>
+
+    <bean id="vipdao" class="com.zyp.MOOC.dao.Vipdao">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+
+    <bean id="vipServiceImpl" class="com.zyp.MOOC.services.Impl.VipServiceImpl">
+        <property name="vipdao" ref="vipdao"/>
+    </bean>
+
+
+</beans>
